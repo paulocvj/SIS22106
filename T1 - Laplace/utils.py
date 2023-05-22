@@ -1,9 +1,3 @@
-import sys
-import os
-import control as ctl
-import matplotlib.pyplot as plot
-import numpy as np
-
 def Gera_Polinomio(saida, entrada):
     print("Gerador de Diagrama de Polos e Zeros\n")
     print("Função de transferência: H(s) = Out(s)/In(s)\n")
