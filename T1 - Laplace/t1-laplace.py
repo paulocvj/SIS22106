@@ -3,12 +3,21 @@ import control as ctl
 import matplotlib.pyplot as plot
 import numpy as np
 
-from utils import *
-
 saida = []
 entrada = []
 
-Gera_Polinomio(saida, entrada)
+print("Gerador de Diagrama de Polos e Zeros\n")
+print("Função de transferência: H(s) = Out(s)/In(s)\n")
+n = int(input("Entre com o grau do polinômio do numerador: \n Ex: 50s^2 + 10s - 5 -> grau 2\nGrau ->"))
+for i in range(n+1):
+    x = int(input(f"Entre com o coeficiente {i+1}: "))
+    saida.append(x)
+
+n = int(input("Entre com o grau do polinômio do denominador: \n Ex: 50s^2 + 10s - 5 -> grau 2\nGrau ->"))
+for i in range(n+1):
+    x = int(input(f"Entre com o coeficiente {i+1}: "))
+    entrada.append(x)
+
 print(saida, entrada)
 # A função tf do módulo control faz uma função de transferência com os argumentos de saída e entrada
 H = ctl.tf(saida, entrada)
