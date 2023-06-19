@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 w0 = np.pi/2
-T = 4
+# período se torna o dobro para se tornar periódico
+T = 4 
 inicio_periodo = -T/2
 final_periodo = T/2
 
