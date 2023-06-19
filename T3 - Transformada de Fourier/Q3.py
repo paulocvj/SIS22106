@@ -15,6 +15,7 @@ valores_a_beta = {
     3: 0.75
 }
 
+print(f'Valor de referência utilizado na análise: {valor_referencia} rad/s\n')
 # Loop para cálculo e exibição dos resultados
 for a, beta in valores_a_beta.items():
     # Cálculo da largura de banda essencial
@@ -26,3 +27,5 @@ for a, beta in valores_a_beta.items():
     # Exibição dos resultados
     print(f"Largura de banda essencial (a={a}): {W} rad/s")
     print(f"Erro percentual (a={a}): {erro_percentual}%\n")
+
+input()

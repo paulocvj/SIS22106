@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 def MS7P1(x):
     y = np.ones_like(x)
     i = np.where(x != 0)[0]
@@ -9,11 +8,22 @@ def MS7P1(x):
     return y
 
 omega = np.linspace(-5, 5, 20)
-X = lambda omega: 1j * 2 * ((3/2) * MS7P1(omega * 3/2))**2
+t = np.linspace(-5, 5, 200)
+
+X = lambda omega: 2 * ((3/2) * MS7P1(omega * 3/2))**2
 Dn = X(omega)
 
 # Configuração da figura
 fig = plt.figure(figsize=(8, 10))
+
+plt.subplot(4, 1, 1)
+plt.plot(t, X(t), 'k-', label='X(Omega)')
+
+plt.grid(True)
+plt.axis('tight')
+plt.xlabel('Omega')
+plt.ylabel('X(Omega)')
+plt.legend()
 
 # Espectro de Magnitude
 plt.subplot(4, 1, 2)
