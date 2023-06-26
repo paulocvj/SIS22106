@@ -2,16 +2,16 @@ import numpy as np
 from math import pi
 from scipy import integrate
 
+# Tolerância escolhida
+tolerancia = 0.0000001
+# Pares de valores entre A e B
+valores_ab = [(1, 0.95), (2, 0.90), (3, 0.75)]
+
 def calcular_X(w, a):
     return 1 / (a + 1j * w)
 
 def calcular_energia(B, a):
     return B / (2 * a)
-
-# Tolerância escolhida
-tolerancia = 0.0000001
-# Pares de valores entre A e B
-valores_ab = [(1, 0.95), (2, 0.90), (3, 0.75)]
 
 for a, b in valores_ab:
     E = calcular_energia(b, a)
@@ -41,7 +41,7 @@ for a, b in valores_ab:
         i += 1
 
         if i > limite:
-            print(f"Não foi possível determinar W em {i} iterações!\nO valor mais próximo foi W = {W:.6f} com {relerr * 100}% de erro")
             break
 
-    print(f"{i} iterações totais: W = {W:.6f}\nErro = {relerr * 100:.6f}%\n Energia = {E_W:.6f}, sendo {E_W * 2 * a:.6f}% da energia do sinal\n")
+    print(f"{i} iterações totais: W = {W:.6f}\nErro = {np.abs(relerr * 100):.6f}%\nEnergia = {E_W:.6f}, sendo {E_W * 2 * a:.6f}% da energia do sinal\n")
+input()

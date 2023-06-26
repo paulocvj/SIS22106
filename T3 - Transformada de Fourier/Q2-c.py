@@ -1,12 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def MS7P1(x):
-    y = np.ones_like(x)
-    i = np.where(x != 0)[0]
-    y[i] = np.sin(x[i]) / x[i]
-    return y
-
 def X(w):
     delta_t = -1 / 4 * np.sinc(w / (np.pi * 4)) ** 2
     esq_t = 1 / 2 * (3 * np.sinc(w * 3/ (np.pi * 2)) * np.exp(-1j * w))
@@ -15,7 +9,6 @@ def X(w):
 
 omega = np.linspace(-20, 20, 80)
 Dn = X(omega)
-
 
 # Configuração da figura
 fig = plt.figure(figsize=(8, 10))

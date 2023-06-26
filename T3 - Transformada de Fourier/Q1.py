@@ -9,23 +9,23 @@ final_periodo = T/2
 
 t = np.arange(inicio_periodo, final_periodo, (final_periodo - inicio_periodo)/(10000))
 
-qtd_periodos = 3
+qtd_periodos = 10
 
-# Algoritmo para fazer a análise da transformada
+# Algoritmo para a análise da transformada
 def fourier(n_periodos):
-    Dn = np.array(np.zeros(n_periodos * 2 + 1).astype("complex128"))
-    y = np.zeros(t.shape).astype("complex128")
+    Dn = np.zeros(n_periodos * 2 + 1, dtype=np.complex128)
+    y = np.zeros(t.shape, dtype=np.complex128)
     
-    with np.nditer(Dn, op_flags=['readwrite']) as it:
-        for n, x in enumerate(it):
-            if n == n_periodos:
-                x[...] = (3/4)/T # Componente DC
-            else:
-                n_resultante = n - n_periodos
-                x[...] = X(n_resultante * w0)/T
+    for n in range(len(Dn)):
+        if n == n_periodos:
+            Dn[n] = (3/4) / T  # Componente DC
+        else:
+            nr = n - n_periodos
+            Dn[n] = X(nr * w0) / T
 
-    for k, c in enumerate(Dn):
-        y += c * np.exp(1j * (k - n_periodos) * w0 * t)
+    for k in range(len(Dn)):
+        y += Dn[k] * np.exp(1j * (k - n_periodos) * w0 * t)
+    
     return y
 
 def X(w):
